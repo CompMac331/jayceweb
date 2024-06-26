@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Jayce's World </title>
+</head>
+
+<style>
+    h1 {
+        text-align: center;
+        color: darkslategray;
+    }
+
+    h2 {
+        text-align: center;
+        color: darkslategrey;
+    }
+
+    h3 {
+        text-indent: 10%;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .ribbon {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        background-color: darkslategray;
+        color: white;
+        text-align: center;
+        padding: 30px 0px;
+        z-index: 1000;
+    }
+
+    .ribbon_container {
+        display: flex;
+        justify-content: left;
+        gap: 10px;
+        margin: 20px 0;
+
+    }
+
+    .content {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .button_container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .textexpand {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+        border: none;
+        background: none;
+        font-size: 16px;
+    }
+    .slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.image-container {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slider-image.active {
+    opacity: 1;
+}
+button {
+    background: none;
+    outline: none;
+}
+img {
+    outline: black;
+    outline: 20px;
+}
+</style>
+
+<body">
+    <div class="ribbon">
+        <div class="ribbon_container">
+            <div style="text-indent: 5%;">
+                Jayce's World
+            </div>
+            <button class="button" onclick="window.location.href='aboutme.html'">About Me</button>
+                <button class="button" onclick="window.location.href='gamelanding.html'">Games</button>
+                
+        </div>
+    </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1> Welcome to Jayce's World! </h1>
+    <div style="text-align: center;">
+        
+        <div class="slider-container">
+            <button class="image-button" id="prevBtn"><img src="download.png" height="25%" width="25%"></button>
+            <div class="image-container">
+                <img src="Attachment.jpg" alt = "Image 1" class="slider-image", style="transform: rotate(180deg);">
+                <img src="IMG_2680.png" alt="Image 2" class="slider-image">
+                <img src="IMG_2731.png" alt="Image 3" class="slider-image">
+                <img src="IMG_2743.png" alt="Image 4" class="slider-image">
+                <img src="IMG_6915.png" alt="Image 5" class="slider-image">
+            </div>
+            <button class="image-button" id="nextBtn"><img src="download.png" height="25%" width="25%" style="transform: rotate(180deg);"></button>
+        </div>
+    </div>
+
+   
+
+    <h2>Contacts</h2>
+    <h4>Want to chat about coding, Zelda, or just high school life? Here's how you can reach me</h4>
+    <div style="text-align: center;">
+        Email: orangepankakes22yt@gmail.com <br>
+        Phone: 218-565-3253
+    </div>
+    
+    
+    </div>
+    
+
+    
+    
+    <script>
+        const images = document.querySelectorAll('.slider-image');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+let currentIndex = 0;
+
+function showImage(index) {
+    images.forEach((img, i) => {
+        if (i === index) {
+            img.classList.add('active');
+        } else {
+            img.classList.remove('active');
+        }
+    });
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+}
+
+nextBtn.addEventListener('click', nextImage);
+prevBtn.addEventListener('click', prevImage);
+
+// Show the first image initially
+showImage(currentIndex);
+    </script>
+    </body>
+
+</html>

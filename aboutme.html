@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <style>
+           table{
+        width: 100%;
+    }
+    td{
+        width: 100%;
+    }
+    tr{
+        display: flex;
+        align-content: center;
+    }
+
+        .ribbon {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        background-color: darkslategray;
+        color: white;
+        text-align: center;
+        padding: 30px 0px;
+        z-index: 1000;
+    }
+
+    .ribbon_container {
+        display: flex;
+        justify-content: left;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    .content {
+        display: none;
+        margin-top: 10px;
+        
+    }
+    .content2 {
+        display: none;
+        margin-top: 10px;
+       
+    }
+
+    .button_container {
+        display: flex;
+        
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .textexpand {
+        cursor: pointer;
+        color: black;
+        border: black;
+        background-color: white;
+        font-size: 12px;
+    }
+    .textexpandb {
+        cursor: pointer;
+        color: black;
+        border: black;
+        background-color: white;
+        font-size: 12px;
+    }
+    .textcontainer {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        width: 33%;
+        padding-left: 0%;
+    }
+    .textcontainerb {
+        display: flex;
+        justify-content: right;
+        align-items: right;
+        padding-left: 66%;
+        width: 33%;
+
+    }
+    
+    p {
+        font-size: 17px;
+
+    }
+    .headcontainer{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    h4 {
+        text-align: center;
+    }
+    button {
+    background: none;
+    outline: none;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+    </style>
+    <body>
+
+        
+        <div class="ribbon">
+            <div class="ribbon_container">
+                <div style="text-indent: 5%;">
+                    <a href="index.html">Jayce's World</a>
+                </div>
+                <button class="button" onclick="window.location.href='aboutme.html'">About Me</button>
+                <button class="button" onclick="window.location.href='gamelanding.html'">Games</button>
+                
+            </div>
+        </div>
+        <br>
+        <br>
+        
+    <div>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <h4>
+            Hey there! I'm Jayce, a student at Esko High School with a passion for technology and gaming. When I'm not hitting the books, you'll find me diving into code or exploring virtual worlds.
+        </h4>
+        
+
+        
+        
+        <div class="headcontainer">
+        <div class="button_container">
+            
+            <h2>My Interests</h2>
+            <button class="textexpand" onclick="toggleContent()">Click to Show</button>
+            <h2>School Life</h2>
+            <button class="textexpandb" onclick="toggleContentb()">Click to Show</button>
+            </div>
+        </div>
+        </div>
+        
+        <table>
+            <tr>
+                <td>
+            <div id="content1" class="content">
+                <div class="textcontainer">
+                    
+                    <p>
+                        My Interests<br>
+                        Programming: I'm always working on sharpening my skills in C++ and Python. There's something thrilling
+                        about bringing ideas to life through code.
+                        <br>
+                        Gaming: I'm a huge fan of video games, especially the Legend of Zelda series. The mix of adventure,
+                        puzzles, and storytelling keeps me coming back for more.
+                        <br>
+                        Technology: Beyond just gaming and coding, I love keeping up with the latest tech trends and innovations.
+                        <br>
+        
+        
+        
+                        Programming Projects:
+                        <br>
+                        Paper Math:
+                        Paper Math is a C++ Program that I Created to Show How Tall a Piece of Paper Would be if you
+                        Theoretically Folded it X Ammount of Times
+                        
+                    </p>
+                    
+                    
+                
+            </div>
+            </div>
+        </td>
+        <td>
+            <div style="text-align: center;">
+                <img src="openart-image_Tw65z7SM_1719341397980_raw.jpg", height="400", width="400">
+                <img src="openart-image_PoJBOdo7_1719419883869_raw.jpg", height="400", width="400">
+            </div>
+        </td>
+        <td>
+            <div style="text-align: center;">
+                <video height="400" , width="500" controls>
+                    <source
+                        src="a student programmer hacking the mainframe in a caffe-e2352a.mp4"
+                        , type="video/mp4">
+                </video>
+        </td>
+        <td>
+            <div id="content2" class="content2" >
+                <div class="textcontainerb">
+                    <p>
+                        School Life<br>
+                        A glimpse into my time at Esko High: <br>
+    
+                     Favorite subjects:
+                        Algebra, Comp App Exploration<br>
+                Extracurricular activities:
+                Robotics<br>
+                Goals:
+                Graduate and Go to Collage, Major as an Engineer, Get Better at Programming<br>
+                Majors: Computer Science, Software Engineer, Web Development<br>
+                Careers: Full Stack Developer, Game Programmer, UX/UI Dev
+
+            </p>
+                
+            </div>
+            </div>
+        </td>
+        
+        </tr>
+        </table>
+           
+        
+        
+    </div>
+    
+    
+    <script>
+        function toggleContent() {
+            var content = document.getElementById('content1');
+            var button = document.querySelector('.textexpand');
+
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                button.textContent = "Hide Text";
+            } else {
+                content.style.display = "none";
+                button.textContent = "Show Text";
+            }
+        }
+        function toggleContentb() {
+            var contentb = document.getElementById('content2');
+            var buttonb = document.querySelector('.textexpandb');
+
+            if (contentb.style.display === "none" || contentb.style.display === "") {
+                contentb.style.display = "block";
+                buttonb.textContent = "Hide Text";
+            } else {
+                contentb.style.display = "none";
+                buttonb.textContent = "Show Text";
+            }
+        }
+    </script>
+
+    </body>
+</html>

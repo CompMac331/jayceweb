@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hacker Surfers</title>
+    </head>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        #gameCanvas {
+            border: 2px solid #0F0;
+        }
+        #startScreen {
+            position: absolute;
+            color: #0F0;
+            text-align: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #gameOverScreen {
+            position: absolute;
+            color: #F00;
+            text-align: center;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+    <body>
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <div id="startScreen">
+        <p>Click to Play</p>
+        <p style="font-size: 18px;">Use A and D to move left and right</p>
+    </div>
+    <div id="gameOverScreen">
+        <p>Game Over</p>
+        <p>Click to Restart</p>
+    </div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startScreen = document.getElementById('startScreen');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+
+        let gameRunning = false;
+        let player = { x: canvas.width / 2 - 15, y: canvas.height - 50, width: 30, height: 30 };
+        let obstacles = [];
+        let score = 0;
+        let speed = 2;
+        let keys = { a: false, d: false };
+
+        function drawPlayer() {
+            ctx.fillStyle = '#0F0';
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = '#F00';
+            obstacles.forEach(obs => {
+                ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+            });
+        }
+
+        function updateObstacles() {
+            if (Math.random() < 0.02) {
+                let obstacleWidth = Math.random() * 100 + 20;
+                obstacles.push({
+                    x: Math.random() * (canvas.width - obstacleWidth),
+                    y: -30,
+                    width: obstacleWidth,
+                    height: 20
+                });
+            }
+
+            obstacles.forEach(obs => {
+                obs.y += speed;
+            });
+
+            obstacles = obstacles.filter(obs => obs.y < canvas.height);
+        }
+
+        function checkCollision() {
+            return obstacles.some(obs =>
+                player.x < obs.x + obs.width &&
+                player.x + player.width > obs.x &&
+                player.y < obs.y + obs.height &&
+                player.y + player.height > obs.y
+            );
+        }
+
+        function movePlayer() {
+            if (keys.a && player.x > 0) player.x -= 5;
+            if (keys.d && player.x < canvas.width - player.width) player.x += 5;
+        }
+
+        function gameLoop() {
+            if (!gameRunning) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            movePlayer();
+            drawPlayer();
+            drawObstacles();
+            updateObstacles();
+
+            if (checkCollision()) {
+                gameOver();
+                return;
+            }
+
+            score++;
+            if (score % 500 === 0) speed += 0.5;
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = '20px Arial';
+            ctx.fillText(`Score: ${score}`, 10, 30);
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function gameOver() {
+            gameRunning = false;
+            gameOverScreen.style.display = 'block';
+        }
+
+        function startGame() {
+            gameRunning = true;
+            startScreen.style.display = 'none';
+            gameOverScreen.style.display = 'none';
+            player = { x: canvas.width / 2 - 15, y: canvas.height - 50, width: 30, height: 30 };
+            obstacles = [];
+            score = 0;
+            speed = 2;
+            gameLoop();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'a' || e.key === 'd') {
+                keys[e.key] = true;
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'a' || e.key === 'd') {
+                keys[e.key] = false;
+            }
+        });
+
+        canvas.addEventListener('click', startGame);
+        gameOverScreen.addEventListener('click', startGame);
+    </script>
+        <button class="button", onclick="window.location.href='gamelanding.html'">Game Page</button>
+    </body>
+</html>

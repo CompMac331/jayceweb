@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <style>
+        .ribbon {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        background-color: darkslategray;
+        color: white;
+        text-align: center;
+        padding: 30px 0px;
+        z-index: 1000;
+    }
+
+    .ribbon_container {
+        display: flex;
+        justify-content: left;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    button {
+    background: none;
+    outline: none;
+}
+    </style>
+    <body>
+        <div class="ribbon">
+            <div class="ribbon_container">
+                <div style="text-indent: 5%;">
+                    <a href="index.html">Jayce's World</a>
+                </div>
+                <button class="button" onclick="window.location.href='aboutme.html'">About Me</button>
+                <button class="button" onclick="window.location.href='gamelanding.html'">Games</button>
+                
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button class="image-button" style="width: 50%;" onclick="window.location.href='scratchgame.html'">
+            <img src="maxresdefault.jpg" alt="Example Button" height="225" width="400">
+            <span>Zelda Scratch</span>
+        </button>
+        <button class="image-button" style="width: 50%;" onclick="window.location.href='gameA.html'">
+            <img src="Capture.PNG" alt="Example Button" height="225" width="400">
+            <span>Hacker Surfers</span>
+        </button>
+    </body>
+</html>
